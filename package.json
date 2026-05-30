@@ -10,7 +10,7 @@
     "postinstall": "node scripts/copy-sql-wasm.mjs"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "next": "15.1.11",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "sql.js": "1.12.0"
