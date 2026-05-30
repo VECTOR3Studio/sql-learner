@@ -1,0 +1,9 @@
+/node_modules
+/.next
+/out
+/build
+.DS_Store
+*.log
+.server.log
+/public/sql-wasm.wasm
+next-env.d.ts
