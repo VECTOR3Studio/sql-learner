@@ -138,6 +138,23 @@ export default function Sandbox() {
             <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
               Schéma
             </h2>
+            <a
+              href="/era-model-soc-poistovne.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mb-3 block overflow-hidden rounded-lg border border-slate-200 transition hover:border-brand-300"
+              title="Otvoriť ERA model v plnej veľkosti"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/era-model-soc-poistovne.png"
+                alt="ERA model schémy sociálnej poisťovne"
+                className="w-full bg-white"
+              />
+              <span className="block bg-slate-50 px-2 py-1.5 text-center text-xs text-slate-500 group-hover:text-brand-700">
+                🗺️ ERA model sociálnej poisťovne — klikni pre plnú veľkosť
+              </span>
+            </a>
             <div className="space-y-3">
               {SANDBOX_TABLES.map((t) => (
                 <details key={t.name} className="group">
