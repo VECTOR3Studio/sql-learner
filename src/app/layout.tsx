@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import { ProgressProvider } from "@/lib/progress";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Príprava na skúšku z Oracle SQL",
@@ -25,6 +26,7 @@ export default function RootLayout({
           </footer>
         </ProgressProvider>
       </body>
+        <Analytics />
     </html>
   );
 }
