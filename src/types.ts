@@ -76,6 +76,31 @@ export interface Flashcard {
   back: string;
 }
 
+export type PracticalCategory =
+  | "select"
+  | "dml"
+  | "ddl"
+  | "plsql-block"
+  | "trigger"
+  | "proc-func";
+
+export interface Practical {
+  id: string;
+  category: PracticalCategory;
+  topic: TopicId;
+  /** The task statement (Slovak), as it would appear on the exam. */
+  prompt: string;
+  /** The reference Oracle / exam solution shown when revealed. */
+  answer: string;
+  answerLang: "sql" | "plsql";
+  /** Marks the solution as Oracle-only (won't run in the SQLite sandbox). */
+  oracleOnly?: boolean;
+  /** Optional SQLite-runnable variant used by the "Open in sandbox" button. */
+  sandbox?: string;
+  /** Optional extra hint shown under the solution. */
+  note?: string;
+}
+
 export interface SandboxTable {
   name: string;
   ddl: string;

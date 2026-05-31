@@ -7,6 +7,7 @@ const LINKS = [
   { href: "/", label: "Prehľad" },
   { href: "/lessons", label: "Lekcie" },
   { href: "/sandbox", label: "SQL sandbox" },
+  { href: "/practice", label: "Praktické otázky" },
   { href: "/quiz", label: "Kvíz" },
   { href: "/flashcards", label: "Kartičky" },
   { href: "/progress", label: "Slabé miesta" },

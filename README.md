@@ -1,12 +1,13 @@
-# Príprava na skúšku z Oracle SQL
+# Oracle SQL Exam Prep
 
-Študijná appka (v slovenčine) na univerzitnú skúšku z Oracle SQL, predpripravená
-z tvojich materiálov: schéma **sociálnej poisťovne** (tabuľky `p_*`), kľúče
-k otázkam s výberom odpovede a teoretické bloky (ACID, BCNF / funkčné závislosti,
-ERA kardinalita, triggre, sekvencie, transakcie, relačná algebra).
+A study app (UI in Slovak) for a university-level Oracle SQL final, pre-loaded
+from your exam materials: the **social-insurance schema** (`p_*` tables), the
+multiple-choice answer keys, and the theory blocks (ACID, BCNF / functional
+dependencies, ER cardinality, triggers, sequences, transactions, relational
+algebra).
 
-Postavené na **Next.js (App Router) + TypeScript + Tailwind CSS**. Celý postup sa
-ukladá do **localStorage** — žiadny backend.
+Built with **Next.js (App Router) + TypeScript + Tailwind CSS**. All progress is
+saved in **localStorage** — no backend.
 
 ## Run it
 
@@ -33,13 +34,18 @@ npm run build && npm run start
   tokens (`ROWNUM`, `SYSDATE`, `FETCH FIRST`, …) are flagged because they won't
   run in SQLite. Press **Ctrl/Cmd+Enter** to run. Validate the schema with
   `node --experimental-strip-types scripts/check-sandbox.mts`.
+- **Practical questions** (`/practice`) — exam-style "write the SQL / PL-SQL"
+  tasks grouped by category (SELECT, DML, DDL & constraints, PL/SQL blocks,
+  triggers, procedures & functions). Each task hides its solution behind a
+  **Show solution** toggle; runnable SELECT solutions have an **Open in sandbox**
+  button (and every solution can be copied).
 - **Quiz** (`/quiz`) — exam-style multiple-choice + written questions parsed from
   the materials. Choose topics, length (5/10/20), timed or untimed, and a
   weak-spot bias that oversamples topics you miss. Written answers are loosely
   keyword-graded with the model answer always shown.
 - **Flashcards** (`/flashcards`) — term/concept review per topic with self-grading.
 - **Weak spots** (`/progress`) — accuracy per topic, ranked weak spots, quiz
-  history, and flashcard stats. Feeds the “weak-spot bias” quiz mode.
+  history, and flashcard stats. Feeds the "weak-spot bias" quiz mode.
 
 ## Where the content lives
 
@@ -48,6 +54,7 @@ npm run build && npm run start
 | `src/data/topics.ts` | Topic list |
 | `src/data/lessons.ts` | Lesson theory + Oracle syntax |
 | `src/data/questions.ts` | Quiz questions (MCQ + written), answer keys |
+| `src/data/practicals.ts` | Practical SQL / PL-SQL writing tasks + solutions |
 | `src/data/flashcards.ts` | Flashcards |
 | `src/data/sandbox.ts` | SQLite schema, seed rows, example queries |
 
@@ -60,4 +67,6 @@ The sandbox runs **SQLite**, so a few things differ from Oracle (covered in the
 lessons): use `LIMIT` instead of `FETCH FIRST`/`ROWNUM`, and `strftime('%Y', d)`
 instead of `EXTRACT(YEAR FROM d)` / `TO_CHAR(d,'YYYY')`. PL/SQL (procedures,
 functions, triggers, cursors), sequences, and `WITH CHECK OPTION` are Oracle-only
-and are taught as display-only examples.
+and are shown as display-only examples. Practical tasks present the Oracle/exam
+solution; runnable SELECT tasks also carry a SQLite-compatible variant used by the
+"Open in sandbox" button.

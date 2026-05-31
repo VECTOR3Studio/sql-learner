@@ -3,6 +3,7 @@
 //   node --experimental-strip-types scripts/check-sandbox.mts
 import initSqlJs from "sql.js";
 import { SANDBOX_TABLES, SANDBOX_EXAMPLES } from "../src/data/sandbox.ts";
+import { PRACTICALS } from "../src/data/practicals.ts";
 
 const SQL = await initSqlJs({});
 const db = new SQL.Database();
@@ -28,6 +29,18 @@ for (const ex of SANDBOX_EXAMPLES) {
   } catch (e) {
     failures++;
     console.error(`FAIL dopyt "${ex.label}": ${(e as Error).message}`);
+  }
+}
+
+for (const p of PRACTICALS) {
+  if (!p.sandbox) continue;
+  try {
+    const res = db.exec(p.sandbox);
+    const rows = res[0]?.values.length ?? 0;
+    console.log(`OK  praktická (sandbox): ${p.id} -> ${rows} riadkov`);
+  } catch (e) {
+    failures++;
+    console.error(`FAIL praktická "${p.id}": ${(e as Error).message}`);
   }
 }
 
